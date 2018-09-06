@@ -1,0 +1,45 @@
+<h1>Burgertime!</h1>
+
+<!-- The demo shows uneaten and newly added burgers on 
+the left, and devoured burgers on the right. The following
+structure (adapted from Cats) works from top-to-bottom. 
+Time-permitting, we will make the change.
+-->
+
+<h2>Burgers Available for Devouring</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block eaten=false}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Devoured Burgers</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block eaten=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+
+<h2>Add a New Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="bur">Burger Name:</label>
+    <input type="text" id="bur" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="eat">Already devoured?</label><br>
+    <input type="radio" name="devoured" value="0" checked> Uneaten!<br>
+    <input type="radio" name="devoured" value="1"> Devoured!
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
