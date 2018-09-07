@@ -11,7 +11,11 @@ Time-permitting, we will make the change.
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block eaten=false}}
+      {{> burgers/burger-block 
+          devoured=this.devoured
+          name=this.burger_name
+          id=this.id
+      }}
     {{/unless}}
   {{/each}}
 </ul>
@@ -21,7 +25,13 @@ Time-permitting, we will make the change.
 <ul>
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block eaten=true}}
+      {{> burgers/burger-block
+          devoured=this.devoured
+          name=this.burger_name
+          id=this.id
+      }}
+     
+
     {{/if}}
   {{/each}}
 </ul>

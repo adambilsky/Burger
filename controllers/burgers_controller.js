@@ -13,7 +13,7 @@ router.get("/", function(request, response) {
         var hbsOjbect = {
             burgers: data
         };
-        console.log(hbsOjbect);
+       
         response.render("index", hbsOjbect);
     });
 });
@@ -21,9 +21,9 @@ router.get("/", function(request, response) {
 // POST ROUTE
 // This route handles the creation of new burgers by the user
 router.post("/api/burgers", function(request, response) {
-    burger.create(["name", "devoured"], [request.body.name, request.body.devoured], function(result) {
+    burger.create(["burger_name", "devoured"], [request.body.name, request.body.devoured], function(result) {
         // Return ID of new burger
-        res.json({ id: result.insertId });
+        response.json({ id: result.insertId });
     });
 });
 
@@ -38,11 +38,17 @@ router.put("/api/burgers/:id", function(request, response) {
         {
             devoured: request.body.devoured
         },
+        condition,
         function(result) {
-            if (result.changedRows === 0) {
+            if (result.changedRows == 0) {
                 return response.status(404).end();
             }
-            response.status(200).end();
+
+            burger.all(function(data) {
+                
+                console.log(data);
+                response.render("index", {  burgers: data  });
+            });
         }
     );
 });

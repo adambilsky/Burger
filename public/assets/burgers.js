@@ -6,7 +6,7 @@
 // This may explain why there are not separate "blocks" in the plan
 // corresponding to 'eaten' and 'uneaten', the way 
 // the cats app has blocks for "sleeping" and "awake."
-
+$(document).ready(function() {
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function () {
     // This handler fires when the user clicks 
@@ -16,7 +16,7 @@ $(function () {
 
     $(".change-eaten").on("click", function (event) {
         var id = $(this).data("id");
-        var newEaten = $(this).data("neweaten");
+        var newEaten = !$(this).data("neweaten");
 
         var newEatenState = {
             devoured: newEaten
@@ -57,13 +57,5 @@ $(function () {
             });
         });
 });
-
-
-
-
-
-
-
-
 
 });

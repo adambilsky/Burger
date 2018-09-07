@@ -14,7 +14,11 @@ var burger = {
     },
     update: function (objColumnValues, condition, callback) {
         orm.update("burgers", objColumnValues, condition, function (result) {
+            console.log("-------->" + JSON.stringify(result));
+            
             callback(result);
+           
+            
         });
     }
 };

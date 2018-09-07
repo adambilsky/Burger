@@ -1,7 +1,5 @@
 <li>
-	{{name}}
-
-	<button class="change-eaten" data-id="{{id}}" data-neweaten="{{eaten}}">
-		{{#if eaten}}GET ANOTHER!{{else}}DEVOUR IT!{{/if}}
+	<button class="change-eaten" data-id="{{id}}" data-neweaten="{{devoured}}">
+		{{name}} {{#if devoured}}GET ANOTHER!{{else}}DEVOUR IT!{{/if}}
 	</button>
 </li>
